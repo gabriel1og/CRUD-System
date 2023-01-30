@@ -13,13 +13,13 @@ const Table = styled.table`
   word-break: break-all;
 `;
 
-export const Thead = styled.thead``;
+const Thead = styled.thead``;
 
-export const Tbody = styled.tbody``;
+const Tbody = styled.tbody``;
 
-export const Tr = styled.tr``;
+const Tr = styled.tr``;
 
-export const Th = styled.th`
+const Th = styled.th`
   text-align: start;
   border-bottom: inset;
   padding-bottom: 5px;
@@ -37,7 +37,7 @@ export default function Grid() {
           <Th>Nome</Th>
           <Th>Email</Th>
           <Th onlyWeb>Fone</Th>
-          <Th></Th>
+          <Th>Data de Nascimento</Th>
           <Th></Th>
         </Tr>
       </Thead>
