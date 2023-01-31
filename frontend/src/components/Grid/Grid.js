@@ -1,8 +1,27 @@
 import React from "react";
+import axios from "axios"
+import { toast } from "react-toastify";
 import * as G from "./styles";
 import { FaTrash, FaEdit } from "react-icons/fa";
 
-export default function Grid({ users }) {
+export default function Grid({ users, setUsers, setOnEdit }) {
+  const handleEdit = (item) => {
+    setOnEdit(item);
+  };
+
+  const handleDelete = async (id) => {
+    await axios
+      .delete("http://localhost:8800/" + id)
+      .then(({ data }) => {
+        const newArray = users.filter((user) => user.id !== id);
+
+        setUsers(newArray);
+        toast.success(data);
+      })
+      .catch(({ data }) => toast.error(data));
+
+    setOnEdit(null);
+  };
 
   return (
     <G.Table>
@@ -11,25 +30,27 @@ export default function Grid({ users }) {
           <G.Th>Nome</G.Th>
           <G.Th>Email</G.Th>
           <G.Th onlyWeb>Fone</G.Th>
-          <G.Th>Data de Nascimento</G.Th>
+          <G.Th></G.Th>
           <G.Th></G.Th>
         </G.Tr>
       </G.Thead>
       <G.Tbody>
         {users.map((user, i) => {
-          <G.Tr key={i}>
-            <G.Td width="30%">{user.nome}</G.Td>
-            <G.Td width="30%">{user.email}</G.Td>
-            <G.Td width="20%" onlyWeb>
-              {user.fone}
-            </G.Td>
-            <G.Td alignCenter width="5%">
-              <FaEdit />
-            </G.Td>
-            <G.Td alignCenter width="5%">
-              <FaTrash />
-            </G.Td>
-          </G.Tr>
+          return (
+            <G.Tr key={i}>
+              <G.Td width="30%">{user.nome}</G.Td>
+              <G.Td width="30%">{user.email}</G.Td>
+              <G.Td width="20%" onlyWeb>
+                {user.fone}
+              </G.Td>
+              <G.Td alignCenter width="5%">
+                <FaEdit onClick={() => handleEdit(user)} />
+              </G.Td>
+              <G.Td alignCenter width="5%">
+                <FaTrash onClick={() => handleDelete(user.id)} />
+              </G.Td>
+            </G.Tr>
+          )
         })}
       </G.Tbody>
     </G.Table>
