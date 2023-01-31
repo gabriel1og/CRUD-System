@@ -2,8 +2,8 @@ import GlobalStyle from "./styles/global";
 import styled from "styled-components";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Form from "./components/Form"
-import Grid from "./components/Grid"
+import Form from "./components/Form/Form"
+import Grid from "./components/Grid/Grid"
 
 
 const Container = styled.div`
