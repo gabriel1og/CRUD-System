@@ -1,3 +1,3 @@
-# CRUD-System
+# CRUD System
 
-Sistema simples de CRUD feito em React e Node.
+Developed in React and Node
