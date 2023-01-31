@@ -3,9 +3,9 @@ import styled from "styled-components";
 import axios from "axios"
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Form from "./components/Form/Form"
-import Grid from "./components/Grid/Grid"
-import { useState } from "react";
+import Form from "./components/Form/Form.js"
+import Grid from "./components/Grid/Grid.js"
+import { useEffect, useState } from "react";
 
 
 const Container = styled.div`
@@ -32,12 +32,17 @@ function App() {
       toast.error(error);
     }
   };
+
+  useEffect(() => {
+    getUsers();
+  }, [setUsers])
+
   return (
     <>
       <Container>
         <Title>USUÁRIOS</Title>
-        <Form />
-        <Grid users={users} />
+        <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
+        <Grid users={users} setUsers={setUsers} setOnEdit={setOnEdit} />
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
       <GlobalStyle />
