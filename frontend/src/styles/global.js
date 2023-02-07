@@ -12,7 +12,7 @@ const Global = createGlobalStyle`
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: #f2f2f2;
+    background-image: radial-gradient(circle, #0f336a, #0a2b57, #092345, #091b34, #081323);
   }
 `;
 

@@ -38,16 +38,16 @@ export default function Grid({ users, setUsers, setOnEdit }) {
         {users.map((user, i) => {
           return (
             <G.Tr key={i}>
-              <G.Td width="30%">{user.nome}</G.Td>
-              <G.Td width="30%">{user.email}</G.Td>
+              <G.Td width="25%">{user.nome}</G.Td>
+              <G.Td width="35%">{user.email}</G.Td>
               <G.Td width="20%" onlyWeb>
                 {user.fone}
               </G.Td>
               <G.Td alignCenter width="5%">
-                <FaEdit onClick={() => handleEdit(user)} />
+                <FaEdit onClick={() => handleEdit(user)} cursor="pointer" />
               </G.Td>
               <G.Td alignCenter width="5%">
-                <FaTrash onClick={() => handleDelete(user.id)} />
+                <FaTrash onClick={() => handleDelete(user.id)} cursor="pointer" />
               </G.Td>
             </G.Tr>
           )

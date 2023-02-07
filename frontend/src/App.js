@@ -10,15 +10,18 @@ import { useEffect, useState } from "react";
 
 const Container = styled.div`
   width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
+  max-width: 500px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 `;
 
-const Title = styled.h2``;
+const Title = styled.h2`
+  color: #fff;
+`;
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -40,7 +43,7 @@ function App() {
   return (
     <>
       <Container>
-        <Title>USUÁRIOS</Title>
+        <Title>CRUD</Title>
         <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
         <Grid users={users} setUsers={setUsers} setOnEdit={setOnEdit} />
       </Container>
